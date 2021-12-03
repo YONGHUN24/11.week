@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20171165/최용훈(drag&drop)</title>
+    <style>
+        #cart{
+            width: 500px;
+            height: 150px;
+            border: 1px solid #aaa;
+        }
+    </style>
+    <script>
+        function allowDrop(e){
+            e.preventDefault();
+        }
+        function drag(e){
+            e.dataTransfer.setData("text", e.target.id);
+        }
+        function drop(e){
+            e.preventDefault();
+            let data = e.dataTransfer.getData("text");
+            e.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+<body>
+    <div id="cart" ondrop="drop(event); "ondragover="allowDrop(event);">
+
+    </div>
+    <div id="list" ondrop="drop(event); "ondragover="allowDrop(event);">
+        <img id="img1" src="./images/product01.jpg" draggable="true" ondragstart="drag{event}">
+        <img id="img2" src="./images/product02.jpg" draggable="true" ondragstart="drag{event}">
+        <img id="img3" src="./images/product03.jpg" draggable="true" ondragstart="drag{event}">
+
+    </div>
+ 
+
+</body>
+</html>
